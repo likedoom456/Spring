@@ -17,22 +17,8 @@ public class Business {
     @Qualifier("USBWriter")
     private DeviceWriter deviceWriter;
 
-    public Business() {
-        System.out.println("2. Business constructor..."); // 3
-    }
-
-//    public Business(DeviceWriter deviceWriter) {
-//        this.deviceWriter = deviceWriter;
-//    }
-
-
-    public void setDeviceWriter(DeviceWriter deviceWriter) {
-        System.out.println("3. setter..."); // 3
-        this.deviceWriter = deviceWriter;
-    }
-
     public void saveData() {
-        System.out.println("4. saveData..."); // 4
+        System.out.println("saveData...");
         deviceWriter.saveToDevice();
     }
 }
