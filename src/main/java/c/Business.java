@@ -9,8 +9,9 @@ package c;
 public class Business {
     private DeviceWriter deviceWriter;
 
-//    public Business() {
-//    }
+    public Business() {
+        System.out.println("2. Business constructor..."); // 3
+    }
 
 //    public Business(DeviceWriter deviceWriter) {
 //        this.deviceWriter = deviceWriter;
@@ -18,10 +19,12 @@ public class Business {
 
 
     public void setDeviceWriter(DeviceWriter deviceWriter) {
+        System.out.println("3. setter..."); // 3
         this.deviceWriter = deviceWriter;
     }
 
     public void saveData() {
+        System.out.println("4. saveData..."); // 4
         deviceWriter.saveToDevice();
     }
 }

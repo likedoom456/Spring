@@ -16,5 +16,9 @@ public class Test {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         Business business = (Business) applicationContext.getBean("business");
         business.saveData();
+//        FloppyWriter floppyWriter = (FloppyWriter) applicationContext.getBean("floppyWriter");
+//        floppyWriter.saveToDevice();
+//        USBWriter usbWriter = (USBWriter) applicationContext.getBean("usbWriter");
+//        usbWriter.saveToDevice();
     }
 }

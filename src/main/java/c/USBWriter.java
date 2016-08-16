@@ -5,8 +5,14 @@ package c;
  * 2016-08-15 14:55
  */
 public class USBWriter implements DeviceWriter {
+
+    public USBWriter() {
+        System.out.println("1. USBWriter constructor..."); // 1
+    }
+
     public void saveToDevice() {
         // TODO: 2016-08-15
-        System.out.println("saved to USB...");
+        System.out.println("5. saveToDevice..."); // 5
+        System.out.println("6. saved to USB..."); // 6
     }
 }
