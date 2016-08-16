@@ -11,4 +11,13 @@
         <property name="deviceWriter" ref="usbWriter"/>
     </bean>
 
+    <bean id="string" class="java.lang.String">
+        <constructor-arg value="DI"/>
+    </bean>
+
+    <bean id="test" class="c.Test">
+        <property name="string" ref="string"/>
+        <!--<property name="string" value="Spring"/>-->
+    </bean>
+
 </beans>
