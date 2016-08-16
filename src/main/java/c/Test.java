@@ -25,16 +25,17 @@ public class Test {
 //        business.saveData();
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        Business business = (Business) applicationContext.getBean("business");
-//        business.saveData();
+        Business business = (Business) applicationContext.getBean("business");
+        business.
+        saveData();
 //        FloppyWriter floppyWriter = (FloppyWriter) applicationContext.getBean("floppyWriter");
 //        floppyWriter.saveToDevice();
 //        USBWriter usbWriter = (USBWriter) applicationContext.getBean("usbWriter");
 //        usbWriter.saveToDevice();
 
-        Test test = (Test) applicationContext.getBean("test");
+//        Test test = (Test) applicationContext.getBean("test");
 //        System.out.println(test);
-        test.hello();
+//        test.hello();
     }
 
     @Override
