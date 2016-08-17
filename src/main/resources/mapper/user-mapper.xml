@@ -6,4 +6,7 @@
     <insert id="create" parameterType="model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO db_test.user VALUES (NULL, #{email}, #{password})
     </insert>
+    <select id="login" parameterType="model.User" resultType="model.User">
+        SELECT * FROM db_test.user WHERE email = #{email} AND password = #{password}
+    </select>
 </mapper>
