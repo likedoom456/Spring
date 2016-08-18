@@ -25,7 +25,7 @@ ${sessionScope.email}
     <input type="submit" value="CREATE">
 </form>
 <hr>
-<table border="1" cellspacing="0" style="border-spacing: 0">
+<table border="1" cellspacing="0" style="border-collapse: collapse;">
     <tr>
         <th>ID</th>
         <th>TITLE</th>
