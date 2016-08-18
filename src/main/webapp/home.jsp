@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>home page</title>
+    <script>
+        function del() {
+            return confirm("DEL?");
+        }
+    </script>
 </head>
 <body>
 <c:if test="${sessionScope.email eq null}">
@@ -36,7 +41,7 @@ ${sessionScope.email}
             <td>${vs.count}</td>
             <td>${book.title}</td>
             <td><a href="/book/queryById/${book.id}">MODIFY</a></td>
-            <td><a href="/book/remove/${book.id}">REMOVE</a></td>
+            <td><a href="/book/remove/${book.id}" onclick="return del()">REMOVE</a></td>
         </tr>
     </c:forEach>
 </table>

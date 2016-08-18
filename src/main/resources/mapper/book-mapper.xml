@@ -7,6 +7,23 @@
         INSERT INTO db_test.book VALUES (NULL, #{title})
     </insert>
     <select id="queryAll" resultType="model.Book">
-        SELECT * FROM db_test.book ORDER BY id
+        SELECT *
+        FROM db_test.book
+        ORDER BY id
     </select>
+    <select id="queryById" parameterType="int" resultType="model.Book">
+        SELECT *
+        FROM db_test.book
+        WHERE id = #{id}
+    </select>
+    <update id="modify" parameterType="model.Book">
+        UPDATE db_test.book
+        SET
+            title = #{title}
+        WHERE id = #{id}
+    </update>
+    <delete id="remove" parameterType="int">
+        DELETE FROM db_test.book
+        WHERE id = #{id}
+    </delete>
 </mapper>
