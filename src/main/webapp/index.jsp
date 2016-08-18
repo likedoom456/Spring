@@ -13,8 +13,8 @@
 <body>
 <h1>index page</h1>
 <form action="/user/login" method="post">
-    <input type="text" name="email" placeholder="EMAIL"><br>
-    <input type="password" name="password" placeholder="PASSWORD"><br>
+    <input type="text" name="email" placeholder="EMAIL" value="tester@test.com"><br>
+    <input type="password" name="password" placeholder="PASSWORD" value="test"><br>
     <input type="submit" value="SIGN IN"><br>
 </form>
 ${requestScope.message}

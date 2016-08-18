@@ -9,6 +9,15 @@ CREATE TABLE db_test.user (
   password VARCHAR(255) NOT NULL
 );
 
+-- book
+DROP TABLE IF EXISTS db_test.book;
+CREATE TABLE db_test.book (
+  id    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL
+);
 
 SELECT *
 FROM db_test.user;
+
+SELECT *
+FROM db_test.book;

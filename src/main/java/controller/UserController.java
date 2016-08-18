@@ -30,7 +30,7 @@ public class UserController extends BaseController {
         }
         if (user != null) {
             session.setAttribute("email", user.getEmail());
-            return "redirect:/home.jsp";
+            return "redirect:/book/queryAll";
         }
         request.setAttribute("message", "invalid email or password.");
         return "/index.jsp";
