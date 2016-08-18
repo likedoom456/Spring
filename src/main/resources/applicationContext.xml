@@ -8,11 +8,21 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="c"/>
-
-    <bean id="string" class="java.lang.String">
-        <constructor-arg value="DI"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///db_test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="system"/>
     </bean>
 
-    <!-- CoC: Convention over Configuration 约定优于配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*-mapper.xml"/>
+        <!--<property name="typeAliasesPackage" value="model"/>-->
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
 </beans>
