@@ -1,8 +1,10 @@
 package controller;
 
+import dao.UserDao;
 import model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,9 +19,14 @@ public class UserController extends BaseController {
     @Autowired
     private SqlSession sqlSession;
 
+    @Autowired
+    @Qualifier("userDaoJDBCImpl")
+    private UserDao userDao;
+
     @RequestMapping("create")
     private String create(User user) {
-        sqlSession.insert("user.create", user);
+//        sqlSession.insert("user.create", user);
+        userDao.create(user);
         return "redirect:/index.jsp";
     }
 
