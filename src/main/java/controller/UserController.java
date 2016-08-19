@@ -27,7 +27,7 @@ public class UserController extends BaseController {
     private String login(User user) {
         user = sqlSession.selectOne("user.login", user);
         if (user != null) {
-            session.setAttribute("email", user.getEmail());
+            session.setAttribute("user", user);
             return "redirect:/book/queryAll";
         }
         request.setAttribute("message", "invalid email or password.");

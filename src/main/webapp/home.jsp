@@ -17,11 +17,11 @@
     </script>
 </head>
 <body>
-<c:if test="${sessionScope.email eq null}">
+<c:if test="${sessionScope.user eq null}">
     <c:redirect url="/index.jsp"/>
 </c:if>
 <h1>home</h1>
-${sessionScope.email}
+${sessionScope.user.email}
 <hr>
 <a href="/user/logout">LOG OUT</a>
 <hr>
