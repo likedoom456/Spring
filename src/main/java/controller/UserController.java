@@ -20,7 +20,6 @@ public class UserController extends BaseController {
     private SqlSession sqlSession;
 
     @Autowired
-    @Qualifier("userDaoJDBCImpl")
     private UserDao userDao;
 
     @RequestMapping("create")
@@ -32,7 +31,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("login")
     private String login(User user) {
-        user = sqlSession.selectOne("user.login", user);
+        user = userDao.login(user);
         if (user != null) {
             session.setAttribute("user", user);
             return "redirect:/book/queryAll";

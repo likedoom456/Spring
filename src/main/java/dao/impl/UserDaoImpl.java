@@ -21,4 +21,9 @@ public class UserDaoImpl implements UserDao {
         System.out.println("MyBatis...");
         sqlSession.insert("user.create", user);
     }
+
+    @Override
+    public User login(User user) {
+        return sqlSession.selectOne("user.login", user);
+    }
 }
