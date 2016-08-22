@@ -9,5 +9,5 @@ import model.User;
 public interface UserDao {
     void create(User user);
 
-    User queryUserByEmail(String email);
+    User query(String statement, Object parameter);
 }

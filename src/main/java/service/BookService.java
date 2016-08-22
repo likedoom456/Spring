@@ -1,5 +1,4 @@
-package dao;
-
+package service;
 
 import model.Book;
 
@@ -7,10 +6,9 @@ import java.util.List;
 
 /**
  * Created by mingfei.net@gmail.com
- * 2016-08-19 10:34
+ * 2016-08-22 16:08
  */
-// DAO: 通用的数据库操作
-public interface BookDao {
+public interface BookService {
 
     void create(Book book);
 

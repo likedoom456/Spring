@@ -12,10 +12,11 @@
 </head>
 <body>
 <h1>sign up</h1>
-<form action="/user/create" method="post">
+<form action="/user/register" method="post">
     <input type="text" name="email" placeholder="EMAIL"><br>
     <input type="password" name="password" placeholder="PASSWORD"><br>
     <input type="submit" value="SIGN UP"><br>
 </form>
+${requestScope.message}
 </body>
 </html>

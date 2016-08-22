@@ -1,12 +1,10 @@
 package controller;
 
-import dao.UserDao;
 import model.User;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.UserService;
 
 /**
  * Created by mingfei.net@gmail.com
@@ -14,29 +12,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("user")
+// Controller: 接受请求，调用底层处理请求，返回响应
 public class UserController extends BaseController {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
-    @RequestMapping("create")
-    private String create(User user) {
-        StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
-        user.setPassword(strongPasswordEncryptor.encryptPassword(user.getPassword()));
-        userDao.create(user);
-        return "redirect:/index.jsp";
+    @RequestMapping("register")
+    private String register(User user) {
+        if (userService.register(user)) {
+            return "redirect:/index.jsp";
+        }
+        request.setAttribute("message", "Email existed.");
+        return "/register.jsp";
     }
 
     @RequestMapping("login")
     private String login(User user) {
-        String plainPassword = user.getPassword();
-        user = userDao.queryUserByEmail(user.getEmail());
+        user = userService.login(user);
         if (user != null) {
-            StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
-            if (strongPasswordEncryptor.checkPassword(plainPassword, user.getPassword())) {
-                session.setAttribute("user", user);
-                return "redirect:/book/queryAll";
-            }
+            session.setAttribute("user", user);
+            return "redirect:/book/queryAll";
         }
         request.setAttribute("message", "invalid email or password.");
         return "/index.jsp";

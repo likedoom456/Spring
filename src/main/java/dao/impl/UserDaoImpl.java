@@ -22,7 +22,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User queryUserByEmail(String email) {
-        return sqlSession.selectOne("user.queryUserByEmail", email);
+    public User query(String statement, Object parameter) {
+        return sqlSession.selectOne(statement, parameter);
     }
+
 }
