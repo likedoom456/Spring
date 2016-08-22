@@ -2,9 +2,8 @@ package controller;
 
 import dao.UserDao;
 import model.User;
-import org.apache.ibatis.session.SqlSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,15 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-    @Autowired
-    private SqlSession sqlSession;
 
     @Autowired
     private UserDao userDao;
 
     @RequestMapping("create")
     private String create(User user) {
-//        sqlSession.insert("user.create", user);
+        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         userDao.create(user);
         return "redirect:/index.jsp";
     }
