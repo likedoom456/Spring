@@ -3,6 +3,7 @@ package controller;
 import dao.UserDao;
 import model.User;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,19 +16,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-
     @Autowired
     private UserDao userDao;
 
     @RequestMapping("create")
     private String create(User user) {
-        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+        StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
+        user.setPassword(strongPasswordEncryptor.encryptPassword(user.getPassword()));
         userDao.create(user);
         return "redirect:/index.jsp";
     }
 
     @RequestMapping("login")
     private String login(User user) {
+        StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
+//        strongPasswordEncryptor.checkPassword(user.getPassword(), )
         user = userDao.login(user);
         if (user != null) {
             session.setAttribute("user", user);

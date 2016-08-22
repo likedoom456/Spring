@@ -20,4 +20,5 @@ dependencies {
     compile 'mysql:mysql-connector-java:5.1.39'
     compile 'jstl:jstl:1.2'
     compile 'commons-codec:commons-codec:1.10'
+    compile 'org.jasypt:jasypt:1.9.2'
 }
