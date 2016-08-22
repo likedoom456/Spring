@@ -29,12 +29,14 @@ public class UserController extends BaseController {
 
     @RequestMapping("login")
     private String login(User user) {
-        StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
-//        strongPasswordEncryptor.checkPassword(user.getPassword(), )
-        user = userDao.login(user);
+        String plainPassword = user.getPassword();
+        user = userDao.queryUserByEmail(user.getEmail());
         if (user != null) {
-            session.setAttribute("user", user);
-            return "redirect:/book/queryAll";
+            StrongPasswordEncryptor strongPasswordEncryptor = new StrongPasswordEncryptor();
+            if (strongPasswordEncryptor.checkPassword(plainPassword, user.getPassword())) {
+                session.setAttribute("user", user);
+                return "redirect:/book/queryAll";
+            }
         }
         request.setAttribute("message", "invalid email or password.");
         return "/index.jsp";

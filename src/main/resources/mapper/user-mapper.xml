@@ -6,7 +6,7 @@
     <insert id="create" parameterType="user" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO db_test.user VALUES (NULL, #{email}, #{password})
     </insert>
-    <select id="login" parameterType="user" resultType="user">
-        SELECT * FROM db_test.user WHERE email = #{email} AND password = #{password}
+    <select id="queryUserByEmail" parameterType="java.lang.String" resultType="user">
+        SELECT * FROM db_test.user WHERE email = #{email}
     </select>
 </mapper>
