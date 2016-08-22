@@ -18,7 +18,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void create(User user) {
-        System.out.println("MyBatis...");
         sqlSession.insert("user.create", user);
     }
 
