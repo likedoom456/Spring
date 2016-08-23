@@ -1,12 +1,13 @@
 package dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by mingfei.net@gmail.com
  * 2016-08-23 09:29
  */
-public interface GenericDao<T, ID> {
+public interface GenericDao<T extends Serializable, ID extends Number> {
 
     void create(T model);
 

@@ -3,13 +3,14 @@ package service.impl;
 import dao.GenericDao;
 import service.GenericService;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by mingfei.net@gmail.com
  * 2016-08-23 13:27
  */
-public class GenericServiceImpl<T, ID> implements GenericService<T, ID> {
+public class GenericServiceImpl<T extends Serializable, ID extends Number> implements GenericService<T, ID> {
 
     GenericDao<T, ID> genericDao;
 

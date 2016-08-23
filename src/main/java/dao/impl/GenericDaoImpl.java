@@ -4,6 +4,7 @@ import dao.GenericDao;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by mingfei.net@gmail.com
  * 2016-08-23 09:40
  */
-class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
+class GenericDaoImpl<T extends Serializable, ID extends Number> implements GenericDao<T, ID> {
 
     private String namespace;
 

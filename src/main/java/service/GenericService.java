@@ -1,12 +1,13 @@
 package service;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by mingfei.net@gmail.com
  * 2016-08-23 13:25
  */
-public interface GenericService<T, ID> {
+public interface GenericService<T extends Serializable, ID extends Number> {
     void create(T model);
 
     void remove(ID id);
