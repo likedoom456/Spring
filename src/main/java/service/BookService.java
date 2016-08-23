@@ -18,5 +18,5 @@ public interface BookService {
 
     Book queryById(int id);
 
-    List<Book> queryAll();
+    List<Book> list();
 }

@@ -6,7 +6,7 @@
     <insert id="create" parameterType="book" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO db_test.book VALUES (NULL, #{title})
     </insert>
-    <select id="queryAll" resultType="book">
+    <select id="list" resultType="book">
         SELECT *
         FROM db_test.book
         ORDER BY id

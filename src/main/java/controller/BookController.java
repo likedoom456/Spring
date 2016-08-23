@@ -21,12 +21,12 @@ public class BookController extends BaseController {
     @RequestMapping("create")
     private String create(Book book) {
         bookService.create(book);
-        return "redirect:/book/queryAll";
+        return "redirect:/book/list";
     }
 
-    @RequestMapping("queryAll")
-    private String queryAll() {
-        session.setAttribute("books", bookService.queryAll());
+    @RequestMapping("list")
+    private String list() {
+        session.setAttribute("books", bookService.list());
         return "redirect:/home.jsp";
     }
 
@@ -39,12 +39,12 @@ public class BookController extends BaseController {
     @RequestMapping("modify")
     private String modify(Book book) {
         bookService.modify(book);
-        return "redirect:/book/queryAll";
+        return "redirect:/book/list";
     }
 
     @RequestMapping("remove/{id}")
     private String remove(@PathVariable int id) {
         bookService.remove(id);
-        return "redirect:/book/queryAll";
+        return "redirect:/book/list";
     }
 }

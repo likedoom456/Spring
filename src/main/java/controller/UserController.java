@@ -32,7 +32,7 @@ public class UserController extends BaseController {
         user = userService.login(user);
         if (user != null) {
             session.setAttribute("user", user);
-            return "redirect:/book/queryAll";
+            return "redirect:/book/list";
         }
         request.setAttribute("message", "invalid email or password.");
         return "/index.jsp";
