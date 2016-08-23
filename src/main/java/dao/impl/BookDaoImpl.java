@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  * 2016-08-19 10:37
  */
 @Repository
-public class BookDaoImpl extends GenericDaoImpl<Book> implements BookDao {}
+public class BookDaoImpl extends GenericDaoImpl<Book, Long> implements BookDao {}

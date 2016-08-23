@@ -1,5 +1,6 @@
 package service.impl;
 
+import dao.GenericDao;
 import dao.UserDao;
 import model.User;
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -12,26 +13,28 @@ import service.UserService;
  * 2016-08-22 15:48
  */
 @Service // @Component @Controller @Repository
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    public UserServiceImpl(GenericDao<User, Integer> genericDao) {
+        super(genericDao);
+    }
 
     @Override
     public boolean register(User user) {
-        if (userDao.query("user.queryUserByEmail", user.getEmail()) != null) {
+        if (genericDao.query("user.queryUserByEmail", user.getEmail()) != null) {
             return false;
         }
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         user.setPassword(encryptor.encryptPassword(user.getPassword()));
-        userDao.create(user);
+        genericDao.create(user);
         return true;
     }
 
     @Override
     public User login(User user) {
         String plainPassword = user.getPassword();
-        user = userDao.query("user.queryUserByEmail", user.getEmail());
+        user = genericDao.query("user.queryUserByEmail", user.getEmail());
         if (user != null) {
             StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
             if (encryptor.checkPassword(plainPassword, user.getPassword())) {

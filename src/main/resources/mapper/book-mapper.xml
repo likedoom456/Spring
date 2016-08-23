@@ -11,7 +11,7 @@
         FROM db_test.book
         ORDER BY id
     </select>
-    <select id="queryById" parameterType="int" resultType="book">
+    <select id="queryById" parameterType="long" resultType="book">
         SELECT *
         FROM db_test.book
         WHERE id = #{id}
@@ -22,7 +22,7 @@
             title = #{title}
         WHERE id = #{id}
     </update>
-    <delete id="remove" parameterType="int">
+    <delete id="remove" parameterType="long">
         DELETE FROM db_test.book
         WHERE id = #{id}
     </delete>

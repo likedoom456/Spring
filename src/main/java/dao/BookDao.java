@@ -8,4 +8,4 @@ import model.Book;
  * 2016-08-19 10:34
  */
 // DAO: 通用的数据库操作
-public interface BookDao extends GenericDao<Book> {}
+public interface BookDao extends GenericDao<Book, Long> {}

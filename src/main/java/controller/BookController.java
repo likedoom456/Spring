@@ -31,7 +31,7 @@ public class BookController extends BaseController {
     }
 
     @RequestMapping("queryById/{id}")
-    private String queryById(@PathVariable int id) {
+    private String queryById(@PathVariable long id) {
         session.setAttribute("book", bookService.queryById(id));
         return "redirect:/edit.jsp";
     }
@@ -43,7 +43,7 @@ public class BookController extends BaseController {
     }
 
     @RequestMapping("remove/{id}")
-    private String remove(@PathVariable int id) {
+    private String remove(@PathVariable long id) {
         bookService.remove(id);
         return "redirect:/book/list";
     }

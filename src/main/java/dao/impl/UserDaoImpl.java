@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * 2016-08-19 09:43
  */
 @Repository
-public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
+public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao {
 }

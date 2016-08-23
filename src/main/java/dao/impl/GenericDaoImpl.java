@@ -11,7 +11,7 @@ import java.util.List;
  * Created by mingfei.net@gmail.com
  * 2016-08-23 09:40
  */
-class GenericDaoImpl<T> implements GenericDao<T> {
+class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
 
     private String namespace;
 
@@ -30,7 +30,7 @@ class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public void remove(int id) {
+    public void remove(ID id) {
         sqlSession.delete(namespace.concat("remove"), id);
     }
 
@@ -40,7 +40,7 @@ class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public T queryById(int id) {
+    public T queryById(ID id) {
         return sqlSession.selectOne(namespace.concat("queryById"), id);
     }
 
@@ -52,5 +52,10 @@ class GenericDaoImpl<T> implements GenericDao<T> {
     @Override
     public T query(String statement, Object parameter) {
         return sqlSession.selectOne(statement, parameter);
+    }
+
+    @Override
+    public List<T> queryList(String statement, Object parameter) {
+        return sqlSession.selectList(statement, parameter);
     }
 }
