@@ -17,10 +17,23 @@ CREATE TABLE db_test.book (
 );
 
 ALTER TABLE db_test.book
-  AUTO_INCREMENT = 2147483647;
+AUTO_INCREMENT = 2147483647;
+
+-- student
+DROP TABLE IF EXISTS db_test.student;
+CREATE TABLE db_test.student (
+  id     BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name   VARCHAR(255),
+  gender CHAR(1),
+  age    INT,
+  dob    DATE
+);
 
 SELECT *
 FROM db_test.user;
 
 SELECT *
 FROM db_test.book;
+
+SELECT *
+FROM db_test.student;
