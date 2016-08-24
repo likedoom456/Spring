@@ -29,12 +29,11 @@ public class ModelGenerator {
         String model = scanner.nextLine();
         map.put("model", model);
 
-        Map<String, String> properties = new TreeMap<>();
+        Map<String, String> properties = new LinkedHashMap<>();
         System.out.println("input Model class properties: ");
         String line = scanner.nextLine(); // String name, int age, String gender
         for (String property : line.split(", ")) {
-            properties.put(property.split(" ")[0], property.split(" ")[1]);
-            System.out.println(property.split(" ")[0]+"<-------------->"+property.split(" ")[1]);
+            properties.put(property.split(" ")[1], property.split(" ")[0]);
         }
 
         map.put("properties", properties);
