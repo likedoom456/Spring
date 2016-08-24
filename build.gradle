@@ -23,4 +23,5 @@ dependencies {
     compile 'jstl:jstl:1.2'
     compile 'commons-codec:commons-codec:1.10'
     compile 'org.jasypt:jasypt:1.9.2'
+    compile 'org.projectlombok:lombok:1.16.8'
 }
