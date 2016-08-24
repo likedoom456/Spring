@@ -24,5 +24,3 @@ FROM db_test.user;
 
 SELECT *
 FROM db_test.book;
-
-TRUNCATE TABLE db_test.user;
