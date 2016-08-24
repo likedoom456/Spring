@@ -22,9 +22,9 @@ public class FreemarkerTest {
         FreeMarkerConfig freeMarkerConfig = (FreeMarkerConfig) applicationContext.getBean("freemarker");
 
         Template template = freeMarkerConfig.getConfiguration().getTemplate("test.ftl"); // 1. template
-        Map<String, String> map = new HashMap<>(); // 2. Java object
-        map.put("name", "Freemarker");
-        Writer writer = new FileWriter("test.html"); // 3. output
-        template.process(map, writer); // 4. process
+//        Map<String, String> map = new HashMap<>(); // 2. Java object
+//        map.put("name", "Freemarker");
+        Writer writer = new FileWriter("test.txt"); // 3. output
+        template.process(null, writer); // 4. process
     }
 }

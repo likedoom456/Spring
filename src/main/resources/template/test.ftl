@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>freemarker test</title>
-</head>
-<body>
-<h1>Hello, ${name}!</h1>
-</body>
-</html>
+
+<#assign keys = {"String":"name", "int":"age", "String":"gender"}?keys>
+<#list keys as key>
+    private ${key} ${{"String":"name", "int":"age", "String":"gender"}[key]};
+</#list>
+
+<#--
+name = mouse; price = 50;
+-->
